@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 7f;
     public Animator animator;
     private bool checkFire;
+    public GameObject ui;
 
     void Start()
     {
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
             player.transform.position += Vector3.forward * Time.deltaTime * speed;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && ui.GetComponent<SkyStamina>().allowRun)
         {
             speed += 15f;
         }

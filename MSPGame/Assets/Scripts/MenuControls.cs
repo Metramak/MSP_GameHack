@@ -7,7 +7,7 @@ public class MenuControls : MonoBehaviour
 {
     public void playPressed()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Assets/Scenes/LevelOne.unity", LoadSceneMode.Single);
 
     }
 
