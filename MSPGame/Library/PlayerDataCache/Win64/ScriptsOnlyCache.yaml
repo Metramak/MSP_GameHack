@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - Intro
     - MenuControls
     - Settings
     UnityEditor.TestRunner.dll:
@@ -22,7 +23,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
-    Assets/Scenes/Main Menu.unity:
+    Assets/Scripts/Main Menu.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -36,6 +37,10 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
@@ -77,6 +82,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10142}
     - Class: 114
       Script: {instanceID: 10324}
+    - Class: 114
+      Script: {instanceID: 25054}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -90,6 +97,12 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 241
+      Script: {instanceID: 0}
+    - Class: 243
+      Script: {instanceID: 0}
+    - Class: 245
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
@@ -702,7 +715,7 @@ ScriptsOnlyBuild:
     className: AudioTrack
   - hash:
       serializedVersion: 2
-      Hash: 7b26a6f2702ce1ee0f3d670fdd17c364
+      Hash: d17fd770c6510467b5962ce186a956a4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Settings
@@ -754,7 +767,13 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: c10f7d93bbd49ba401b37dd962cb25b1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Intro
   platform: 19
   scenePathNames:
-  - Assets/Scenes/Main Menu.unity
+  - Assets/Scripts/Main Menu.unity
   playerPath: C:/Users/Metramak/Downloads/MSPGame.exe
