@@ -8,13 +8,23 @@ public class Skyhealth : MonoBehaviour
     public float healthlength = 232;
     public GameObject healthstring;
     public GameObject healthbar;
+    public GameObject bar;
     public bool recoverhealth;
     public float weakSpell = 0.5f;
+    public bool CanFade = false;
+       
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SimulateHealth());
+        foreach (Image im in bar.GetComponentsInChildren<Image>())
+        {
+            if (im.color.a > 0)
+            {
+                im.color = new Color(im.color.r, im.color.g, im.color.b, 1);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -27,7 +37,8 @@ public class Skyhealth : MonoBehaviour
             if(healthlength >= 232)
             {
                 recoverhealth = false;
-                healthbar.SetActive(false);
+                //healthbar.SetActive(false);
+                CanFade = true;
 
             }
             else
@@ -35,20 +46,31 @@ public class Skyhealth : MonoBehaviour
                 healthlength += weakSpell;
             }
         }
+
+        if (CanFade)
+        {
+            Fade();
+        }
+    }
+
+    public void Fade()
+    {
+        foreach (Image im in bar.GetComponentsInChildren<Image>())
+        {   
+            if (im.color.a > 0)
+            {
+                im.color = new Color(im.color.r, im.color.g, im.color.b, im.color.a - Time.deltaTime);
+            }
+            else
+            {
+                CanFade = false;
+            }
+        }
     }
 
     IEnumerator SimulateHealth()
     {
-        yield return new WaitForSeconds(5);
-        healthlength -= 30;
-        yield return new WaitForSeconds(2);
-        healthlength -= 20;
-        yield return new WaitForSeconds(3);
-        healthlength -= 40;
         yield return new WaitForSeconds(3);
         recoverhealth = true;
-        yield return new WaitForSeconds(10);    
-        healthbar.SetActive(true);
-        healthlength -= 232;
     }
 }

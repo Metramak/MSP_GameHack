@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkyStamina : MonoBehaviour
 {
@@ -11,12 +12,12 @@ public class SkyStamina : MonoBehaviour
     public bool allowRun;
     public float staminaRegen = 0.3f;
     public float staminaDecrease = 30f;
+    public bool CanFade = false;
     void Start()
     {
         allowRun = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         staminastring.GetComponent<RectTransform>().sizeDelta = new Vector2(staminalength, 20);
@@ -26,15 +27,20 @@ public class SkyStamina : MonoBehaviour
             if (staminalength >= 232)
             {
                 recoverstamina = false;
-                staminabar.SetActive(false);
+                //staminabar.SetActive(false);
+                CanFade = true;
                 allowRun = true;
             }
             else
             {
                 staminalength += staminaRegen;
+                CanFade = false;
             }
         }
-        
+
+        if(staminalength < 232)
+            SetAlfaInObject(staminabar, 1);
+
         if (staminalength <= 0)
             {
                 staminalength += staminaRegen;
@@ -43,6 +49,35 @@ public class SkyStamina : MonoBehaviour
         
 
         runningTest();
+
+        if (CanFade)
+            Fade();
+    }
+
+    public void SetAlfaInObject(GameObject obj, float alfa)
+    {
+        foreach (Image im in obj.GetComponentsInChildren<Image>())
+        {
+            //if (im.color.a > 0)
+            {
+                im.color = new Color(im.color.r, im.color.g, im.color.b, alfa);
+            }
+        }
+    }
+
+    public void Fade()
+    {
+        foreach (Image im in staminabar.GetComponentsInChildren<Image>())
+        {
+            if (im.color.a > 0)
+            {
+                im.color = new Color(im.color.r, im.color.g, im.color.b, im.color.a - Time.deltaTime);
+            }
+            else
+            {
+                CanFade = false;
+            }
+        }
     }
 
     void runningTest()
