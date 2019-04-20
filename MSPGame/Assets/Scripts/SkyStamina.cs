@@ -8,12 +8,12 @@ public class SkyStamina : MonoBehaviour
     public GameObject staminastring;
     public GameObject staminabar;
     public bool recoverstamina;
-    public bool allowRun = true;
+    public bool allowRun;
     public float staminaRegen = 0.3f;
     public float staminaDecrease = 30f;
     void Start()
     {
-        
+        allowRun = true;
     }
 
     // Update is called once per frame
