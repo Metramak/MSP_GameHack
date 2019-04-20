@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
     public GameObject player;
     public float speed = 7f;
     public Animator animator;
+    private bool checkFire;
 
     void Start()
     {
+        checkFire = true;
         animator = GetComponent<Animator>();
     }
 
@@ -23,9 +25,12 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 1000, Layer_Mask))
         {
             newPoint = hit.point;
-            newPoint.y += 1.5f;
+            Vector3 dir = (newPoint - transform.position).normalized;
+            Quaternion rot = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, 0.5f);
+            //newPoint.y += 1.5f;
         }
-        player.transform.LookAt(newPoint);
+        //player.transform.LookAt(newPoint);
         if (Input.GetKey(KeyCode.W))
         {
             player.transform.position += Vector3.forward * Time.deltaTime * speed;
@@ -59,13 +64,33 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Run", false);
         }
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (checkFire)
+            {
+                checkFire = false;
+                animator.SetBool("Fire", true);
+                StartCoroutine(FireWait());
+            }
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
         {
-            
+            bool variable = false;
+            AI newAI = other.GetComponent<AI>();
+            if (newAI != null)
+            {
+                variable = newAI.patrule;
+            }
         }
+    }
+    IEnumerator FireWait()
+    {
+        animator.SetBool("Fire", true);
+        yield return new WaitForSeconds(1);
+        animator.SetBool("Fire", false);
+        checkFire = true;
     }
 }

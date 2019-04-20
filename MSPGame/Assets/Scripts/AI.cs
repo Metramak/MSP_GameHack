@@ -12,9 +12,11 @@ public class AI : MonoBehaviour
     public GameObject spawnObject;
     public bool patrule;
     private bool checkSpawnPoints;
+    private Vector3 startPos;
 
     void Start()
     {
+        startPos = transform.position;
         patrule = true;
         checkSpawnPoints = true;
     }
@@ -42,10 +44,10 @@ public class AI : MonoBehaviour
         NavMeshHit hit;
         do
         {
-            float xcor = Random.Range(-1000f, 1000f);
+            float xcor = Random.Range(-20f, 20f);
             float ycor = 0.125f;
-            float zcor = Random.Range(-1000f, 1000f);
-            truePos = new Vector3(xcor, ycor, zcor);
+            float zcor = Random.Range(-20f, 20f);
+            truePos = new Vector3(startPos.x + xcor, startPos.y + ycor, startPos.z + zcor);
         }
         while (NavMesh.SamplePosition(truePos, out hit, 1f, NavMesh.AllAreas) == false);
         clone = Instantiate(spawnObject, truePos, Quaternion.identity);
