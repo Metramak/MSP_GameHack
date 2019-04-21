@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private string numbers;
     public Text text;
     public GameObject textBear;
-    public AudioClip mems;
+    public AudioListener mems;
 
     void Start()
     {
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
         }
         if(other.tag == "meme")
         {
-
+            other.gameObject.SetActive(true);
         }
     }
     private void OnTriggerExit(Collider other)
