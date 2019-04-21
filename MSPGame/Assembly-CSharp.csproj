@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\DamagePlayer.cs" />
     <Compile Include="Assets\Scripts\Intro.cs" />
     <Compile Include="Assets\Scripts\MenuControls.cs" />
+    <Compile Include="Assets\Scripts\Pause.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Quest.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
