@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Pause.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Quest.cs" />
+    <Compile Include="Assets\Scripts\ROADTOSKYRIM.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\Skyhealth.cs" />
     <Compile Include="Assets\Scripts\SkyStamina.cs" />

@@ -128,6 +128,7 @@ public class PlayerController : MonoBehaviour
     }
     public void BearAss()
     {
+        Debug.Log("1231231231");
         textBear.SetActive(true);
         questOne.SetActive(false);
     }
