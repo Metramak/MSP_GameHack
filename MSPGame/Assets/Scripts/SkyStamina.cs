@@ -20,6 +20,7 @@ public class SkyStamina : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(allowRun);
         staminastring.GetComponent<RectTransform>().sizeDelta = new Vector2(staminalength, 20);
 
         if(recoverstamina)

@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     private bool checkFire;
     public GameObject ui;
+    public GameObject questOne;
 
     void Start()
     {
@@ -36,15 +37,23 @@ public class PlayerController : MonoBehaviour
         {
             player.transform.position += Vector3.forward * Time.deltaTime * speed;
         }
+        speed = 7f;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (ui.GetComponent<SkyStamina>().allowRun == true)
+            {
+                speed += 15f;
+            }
+        }
+        //if (Input.GetKeyUp(KeyCode.LeftShift))
+        //{
+        //    speed -= 15f;
+        //}
+        //if (Input.GetKeyUp(KeyCode.LeftShift) && ui.GetComponent<SkyStamina>().allowRun == false)
+        //{
+        //    speed += 15f;
+        //}
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && ui.GetComponent<SkyStamina>().allowRun)
-        {
-            speed += 15f;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            speed -= 15f;
-        }
         if (Input.GetKey(KeyCode.S))
         {
             player.transform.position += -Vector3.forward * Time.deltaTime * speed;
@@ -86,6 +95,17 @@ public class PlayerController : MonoBehaviour
                 variable = newAI.patrule;
             }
         }
+        if(other.tag == "Quest")
+        {
+            questOne.SetActive(true);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Quest")
+        {
+            questOne.SetActive(false);
+        }
     }
     IEnumerator FireWait()
     {
@@ -93,5 +113,9 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1);
         animator.SetBool("Fire", false);
         checkFire = true;
+    }
+    public void BearAss()
+    {
+
     }
 }
