@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,9 +15,15 @@ public class PlayerController : MonoBehaviour
     private bool checkFire;
     public GameObject ui;
     public GameObject questOne;
+    public GameObject bearAss;
+    private string numbers;
+    public Text text;
+    public GameObject textBear;
+    public AudioClip mems;
 
     void Start()
     {
+        numbers = bearAss.gameObject.GetComponent<Text>().text;
         checkFire = true;
         animator = GetComponent<Animator>();
     }
@@ -99,6 +107,10 @@ public class PlayerController : MonoBehaviour
         {
             questOne.SetActive(true);
         }
+        if(other.tag == "meme")
+        {
+
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -116,6 +128,7 @@ public class PlayerController : MonoBehaviour
     }
     public void BearAss()
     {
-
+        textBear.SetActive(true);
+        questOne.SetActive(false);
     }
 }

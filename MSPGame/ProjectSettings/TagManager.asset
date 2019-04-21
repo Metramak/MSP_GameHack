@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Quest
+  - BEnemy
+  - meme
   layers:
   - Default
   - TransparentFX

@@ -13,9 +13,11 @@ public class AI : MonoBehaviour
     public bool patrule;
     private bool checkSpawnPoints;
     private Vector3 startPos;
+    public float health;
 
     void Start()
     {
+        health = 100f;
         startPos = transform.position;
         patrule = true;
         checkSpawnPoints = true;
@@ -37,6 +39,14 @@ public class AI : MonoBehaviour
             }
         }
         agent.SetDestination(newPointForPlayer);
+        LiveObj();
+    }
+    void LiveObj()
+    {
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
     void spawnPoints()
     {

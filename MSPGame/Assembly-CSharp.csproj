@@ -63,7 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AI.cs" />
+    <Compile Include="Assets\Scripts\BearHealth.cs" />
     <Compile Include="Assets\Scripts\CameraView.cs" />
+    <Compile Include="Assets\Scripts\DamagePlayer.cs" />
     <Compile Include="Assets\Scripts\Intro.cs" />
     <Compile Include="Assets\Scripts\MenuControls.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
